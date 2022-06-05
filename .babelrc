@@ -1,0 +1,30 @@
+{
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  },
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@assets": "./src/assets",
+          "@common": "./src/common",
+          "@hooks": "./src/common/hooks",
+          "@config": "./src/config",
+          "@features": "./src/features",
+          "@components": "./src/library/components",
+          "@networking": "./src/library/networking",
+          "@utils": "./src/library/utils",
+          "@storage": "./src/library/utils/storage",
+          "@model": "./src/model",
+          "@navigation": "./src/navigation",
+          "@theme": "./src/themes",
+          "@transition": "./src/transition"
+        }
+      }
+    ]
+  ]
+}
