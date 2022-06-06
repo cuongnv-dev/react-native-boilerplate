@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { isIos, STORAGE_KEY_APP_THEME } from '@common';
+import { AuthProvider } from '@features/un-authentication';
 import { AppContainer } from '@navigation/app-navigation';
 import { saveString } from '@storage';
 import I18n from '@utils/i18n/i18n';
@@ -52,17 +53,19 @@ export default function App() {
   // }, [i18n]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SafeAreaProvider>
-        <I18nextProvider i18n={I18n}>
-          <Suspense fallback={null}>
-            <GestureHandlerRootView style={styles.root}>
-              <AppContainer />
-            </GestureHandlerRootView>
-          </Suspense>
-        </I18nextProvider>
-      </SafeAreaProvider>
-    </QueryClientProvider>
+    <SafeAreaProvider>
+      <I18nextProvider i18n={I18n}>
+        <Suspense fallback={null}>
+          <GestureHandlerRootView style={styles.root}>
+            <AuthProvider>
+              <QueryClientProvider client={queryClient}>
+                <AppContainer />
+              </QueryClientProvider>
+            </AuthProvider>
+          </GestureHandlerRootView>
+        </Suspense>
+      </I18nextProvider>
+    </SafeAreaProvider>
   );
 }
 const styles = StyleSheet.create({

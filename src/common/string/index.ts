@@ -4,7 +4,7 @@ import { processColor } from 'react-native';
 
 import equals from 'react-fast-compare';
 
-import { ValidateMessageObject } from '@model/config.type';
+import { ValidateMessageObject } from '@model/config';
 
 export const onChangeAlias = (value: string | number): string => {
   let str = value + '';

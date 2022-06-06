@@ -6,7 +6,7 @@ import {
   RESULT_CODE_PUSH_OUT,
   STATUS_TIME_OUT,
 } from '@config/api';
-import { ParamsNetwork, ResponseBase } from '@model/config.type';
+import { ParamsNetwork, ResponseBase } from '@model/config';
 import { translate } from '@utils/i18n/translate';
 import { AxiosError, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 

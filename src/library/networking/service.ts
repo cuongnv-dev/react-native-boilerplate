@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { TIME_OUT } from '@config/api';
 import { ENVConfig } from '@config/env';
-import { ParamsNetwork, ResponseBase } from '@model/config.type';
+import { ParamsNetwork, ResponseBase } from '@model/config';
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import {
