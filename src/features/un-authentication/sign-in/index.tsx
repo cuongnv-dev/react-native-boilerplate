@@ -1,18 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { STORAGE_KEY_APP_THEME } from '@common';
-import { responsiveWidth, spacing, typography } from '@theme';
-import { translate } from '@utils/i18n/translate';
-import { loadString } from '@utils/storage';
+import { responsiveHeight, responsiveWidth, spacing, typography } from '@theme';
+
+import { useAuth } from '../auth-provider';
 
 export const SignInScreen = () => {
+  const { signIn } = useAuth();
+
+  const handleSignIn = () => {
+    signIn({ email: 'cuongnv230796@gmail.com', password: 'cuong123' });
+  };
+
   return (
     <SafeAreaView edges={['bottom', 'top']} style={styles.root}>
-      <Text style={styles.text}>{translate('error:errorNetwork')}</Text>
-      <Text>{loadString(STORAGE_KEY_APP_THEME)}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+        <Text style={styles.label}>SignIn</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -20,8 +26,15 @@ const styles = StyleSheet.create({
   root: {
     marginHorizontal: responsiveWidth(spacing.lg),
   },
-  text: {
-    fontFamily: typography.light,
-    fontSize: 24,
+  label: {
+    fontFamily: typography.bold,
+    fontSize: 16,
+    color: 'white',
+  },
+  button: {
+    borderRadius: 8,
+    backgroundColor: '#246BFD',
+    paddingVertical: responsiveHeight(spacing.md),
+    alignItems: 'center',
   },
 });

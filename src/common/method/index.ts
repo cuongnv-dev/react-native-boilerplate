@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 import { ERROR_NETWORK_CODE } from '@config/api';
-import { ResponseBase } from '@model/config.type';
+import { ResponseBase } from '@model/config';
 import { translate } from '@utils/i18n/translate';
 
 export const isIos = Platform.OS === 'ios';
