@@ -1,17 +1,16 @@
 import React, { Suspense, useEffect } from 'react';
-import { LogBox, StyleSheet, Text, UIManager } from 'react-native';
+import { LogBox, StyleSheet, UIManager } from 'react-native';
 
 import { I18nextProvider } from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { isIos, STORAGE_KEY_APP_THEME } from '@common';
-import { loadString, saveString } from '@storage';
-import { typography } from '@theme';
+import { AppContainer } from '@navigation/app-navigation';
+import { saveString } from '@storage';
 import I18n from '@utils/i18n/i18n';
-import { translate } from '@utils/i18n/translate';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -58,13 +57,7 @@ export default function App() {
         <I18nextProvider i18n={I18n}>
           <Suspense fallback={null}>
             <GestureHandlerRootView style={styles.root}>
-              {/* <AppContainer /> */}
-              <SafeAreaView edges={['bottom', 'top']}>
-                <Text style={styles.text}>
-                  {translate('error:errorNetwork')}
-                </Text>
-                <Text>{loadString(STORAGE_KEY_APP_THEME)}</Text>
-              </SafeAreaView>
+              <AppContainer />
             </GestureHandlerRootView>
           </Suspense>
         </I18nextProvider>
@@ -75,9 +68,5 @@ export default function App() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  text: {
-    fontFamily: typography.light,
-    fontSize: 24,
   },
 });
