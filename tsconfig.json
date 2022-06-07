@@ -20,7 +20,7 @@
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     "isolatedModules": true /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
-
+    "resolveJsonModule": true,
     /* Strict Type-Checking Options */
     "strict": true /* Enable all strict type-checking options. */,
     // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
@@ -39,13 +39,14 @@
     "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
     "baseUrl": "." /* Base directory to resolve non-absolute module names. */,
     "paths": {
+      "@animated": ["./src/common/animated/index"],
       "@assets/*": ["./src/assets/*"],
       "@common": ["./src/common/index"],
       "@hooks": ["./src/common/hooks/index"],
       "@config/*": ["./src/config/*"],
       "@features/*": ["./src/features/*"],
-      "@components": ["./src/library/components/index"],
-      "@components/*": ["./src/library/components/*"],
+      "@components": ["./src/components/index"],
+      "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/library/utils/*"],
       "@storage": ["./src/library/utils/storage/index"],
       "@networking": ["./src/library/networking/index"],

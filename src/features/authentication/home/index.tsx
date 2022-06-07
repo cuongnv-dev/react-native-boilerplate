@@ -4,10 +4,13 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useAuth } from '@features/un-authentication';
+import { useGetTodoList } from '@networking';
 import { responsiveHeight, responsiveWidth, spacing, typography } from '@theme';
 
 export const HomeScreen = () => {
   const { signOut } = useAuth();
+  const { data } = useGetTodoList();
+  console.log('data :>> ', data);
   return (
     <SafeAreaView edges={['bottom', 'top']} style={styles.root}>
       <TouchableOpacity style={styles.button} onPress={signOut}>

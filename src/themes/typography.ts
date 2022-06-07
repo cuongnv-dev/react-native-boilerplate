@@ -8,7 +8,10 @@ export const typography = {
 
   medium: 'Nunito-Medium',
 
+  semibold: 'Nunito-Semibold',
+
   bold: 'Nunito-Bold',
 
   italic: 'Nunito-Italic',
 };
+export type FontFamily = keyof typeof typography;

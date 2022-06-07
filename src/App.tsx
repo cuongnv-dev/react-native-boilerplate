@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { isIos, STORAGE_KEY_APP_THEME } from '@common';
+import { AnimatedLoading } from '@components';
 import { AuthProvider } from '@features/un-authentication';
 import { AppContainer } from '@navigation/app-navigation';
 import { saveString } from '@storage';
@@ -22,7 +23,14 @@ if (!isIos) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 }
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      notifyOnChangeProps: 'tracked',
+      retry: false,
+    },
+  },
+});
 
 if (__DEV__) {
   import('react-query-native-devtools').then(({ addPlugin }) => {
@@ -60,6 +68,7 @@ export default function App() {
             <AuthProvider>
               <QueryClientProvider client={queryClient}>
                 <AppContainer />
+                <AnimatedLoading />
               </QueryClientProvider>
             </AuthProvider>
           </GestureHandlerRootView>

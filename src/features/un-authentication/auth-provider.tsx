@@ -10,7 +10,7 @@ import React, {
 
 import { STORAGE_KEY_AUTH_TOKEN } from '@common';
 import { AuthActionKind, AuthContextData } from '@model/auth-context';
-import { loadString, saveString } from '@utils/storage';
+import { loadString, remove, saveString } from '@utils/storage';
 
 import authReducer from './auth-reducer';
 
@@ -60,7 +60,10 @@ const AuthProvider: FC = ({ children }) => {
           payload: { token: 'dummy-auth-token' },
         });
       },
-      signOut: () => dispatch({ type: AuthActionKind.SIGN_OUT }),
+      signOut: () => {
+        remove(STORAGE_KEY_AUTH_TOKEN);
+        dispatch({ type: AuthActionKind.SIGN_OUT });
+      },
       signUp: async (data: any) => {
         // In a production app, we need to send user data to server and get a token
         // We will also need to handle errors if sign up failed

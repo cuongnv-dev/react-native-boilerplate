@@ -10,12 +10,13 @@
       {
         "root": ["./"],
         "alias": {
+          "@animated": "./src/common/animated",
           "@assets": "./src/assets",
           "@common": "./src/common",
           "@hooks": "./src/common/hooks",
           "@config": "./src/config",
           "@features": "./src/features",
-          "@components": "./src/library/components",
+          "@components": "./src/components",
           "@networking": "./src/library/networking",
           "@utils": "./src/library/utils",
           "@storage": "./src/library/utils/storage",
